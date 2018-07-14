@@ -26,12 +26,6 @@
 
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <?php if ($this->session->flashdata('errorMessage')!=null){?>
-                            <div class="alert alert-danger" align="center"><strong><?php echo $this->session->flashdata('errorMessage');?></strong></div>
-                        <?php }
-                        elseif($this->session->flashdata('successMessage')!=null){?>
-                            <div class="alert alert-success" align="center"><strong><?php echo $this->session->flashdata('successMessage');?></strong></div>
-                        <?php }?>
                         <div class="card">
                             <div class="header">
                                 <h2><strong>Basic</strong> Information <small>Description text here...</small> </h2>
@@ -72,17 +66,21 @@
                                     <span class="input-group-addon">
                                         <i class="zmdi zmdi-calendar"></i>
                                     </span>
-                                            <input class="form-control"   type="date" name="admit_date" placeholder="Enter  Admit  date" type="text">
+                                            <input class="form-control"   type="date" name="date" placeholder="Enter date" type="text">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="Age"   name="age" type="text">
+                                            <input class="form-control" placeholder="Age" type="text">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="Enter Patient address" name="address" type="text">
+                                            <select class="form-control show-tick"   name="gender"  tabindex="-98">
+                                                <option value="">- Gender -</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -93,18 +91,29 @@
                                     </div>
                                 </div>
                                 <div class="row clearfix">
+                                    <!--                            <div class="col-sm-6">-->
+                                    <!--                                <div class="form-group">-->
+                                    <!--                                    <input class="form-control" placeholder="Website URL"   name="url"  type="text">-->
+                                    <!--                                </div>-->
+                                    <!--                            </div>-->
                                     <div class="col-sm-6">
                                         <div class="drag-icon-cph">Upload Photo </div>
-                                        <input type="file" name="p_Photo" placeholder="Patient  Image"  class="form-control input-height" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <select class="form-control show-tick"   name="gender"  tabindex="-98">
-                                            <option value="">- Gender -</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
+                                        <input type="file" name="P_Photo" placeholder="Patient  Image"  class="form-control input-height" />
+
+
                                     </div>
                                 </div>
+                                <!--                        <div class="row clearfix">-
+                                <!--                            <div class="col-sm-12">
+                                <!--                                <div class="form-group">
+                                <!--                                    <textarea rows="4" class="form-control no-resize" placeholder="Description"></textarea>
+                                <!--                                </div>
+                                <!--                            </div>-->
+                                <!--<!--                           <div class="col-sm-12">
+                                <!--<!--                                <button type="submit" class="btn btn-primary btn-round">Submit</button>-->
+                                <!--<!--                                <button type="submit" class="btn btn-default btn-round btn-simple">Cancel</button>
+                                <!--<!--                            </div>-->
+                                <!--                        </div>-->
                             </div>
                         </div>
                     </div>
@@ -114,12 +123,25 @@
                         <div class="card">
                             <div class="header">
                                 <h2><strong>Registration</strong> Information <small>Description text here...</small> </h2>
+
+                                <!--                        <ul class="header-dropdown">-->
+                                <!--                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>-->
+                                <!--                                <ul class="dropdown-menu dropdown-menu-right slideUp float-right">-->
+                                <!--                                    <li><a href="javascript:void(0);">Edit</a></li>-->
+                                <!--                                    <li><a href="javascript:void(0);">Delete</a></li>-->
+                                <!--                                    <li><a href="javascript:void(0);">Report</a></li>-->
+                                <!--                                </ul>-->
+                                <!--                            </li>-->
+                                <!--                            <li class="remove">-->
+                                <!--                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>-->
+                                <!--                            </li>-->
+                                <!--                        </ul>-->
                             </div>
                             <div class="body">
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <select class="form-control show-tick"    name="depertment"     tabindex="-98">
+                                            <select class="form-control show-tick"    name="categoryid"     tabindex="-98">
                                                 <option value="">- Select Deparment  -</option>
                                                 <?php  foreach($depertment as $d) { ?>
                                                     <option value="<?php echo $d->dep_id ?>"><?php echo $d->Dep_name ?></option>
@@ -130,8 +152,8 @@
                                     </div>
                                     <div class="col-sm-6"   >
                                         <div class="form-group"  id="example" >
-                                            <select class="form-control show-tick"   name="doctor" tabindex="-98">
-                                                <option    value="">- Select Doctor     -</option>
+                                            <select class="form-control show-tick"   name="speciality" tabindex="-98">
+                                                <option   id="selection" value="">- Select Doctor     -</option>
                                             </select>
 
                                         </div>
@@ -140,10 +162,10 @@
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <select class="form-control show-tick"    name="staff"    tabindex="-98">
+                                            <select class="form-control show-tick"      tabindex="-98">
                                                 <option value="">-  Staff On Duty  -</option>
                                                 <?php  foreach($staff as $s) { ?>
-                                                    <option value="<?php echo $s->staff_id ?>"><?php echo $s->first_name ?> <?php echo $s->last_name ?></option>
+                                                    <option value="<?php echo $s->staff_id ?>"><?php echo $s->staff_name ?></option>
                                                 <?php  } ?>
                                             </select>
 
@@ -151,56 +173,70 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <select class="form-control show-tick"    id="word"   name="word"    tabindex="-98">
-                                                <option value="">-  Avilable Room  No -</option>
-                                                <?php  foreach($word as $s) { ?>
-                                                    <option value="<?php echo $s->word_id ?>"><?php echo $s->word_name ?></option>
+                                            <select class="form-control show-tick"      tabindex="-98">
+                                                <option value="">-  Avilkable Room  On Duty  -</option>
+                                                <?php  foreach($staff as $s) { ?>
+                                                    <option value="<?php echo $s->staff_id ?>"><?php echo $s->staff_name ?></option>
                                                 <?php  } ?>
                                             </select>
 
                                         </div>
                                     </div>
                                 </div>
+                                <!--                        <div class="row clearfix">-->
+                                <!--                            <div class="col-sm-6">-->
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <input class="form-control" placeholder="Doctor Name" type="text">-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
+                                <!--                            <div class="col-sm-6">-->
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <input class="form-control" placeholder="Staff on Duty" type="text">-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
+                                <!--                        </div>-->
                                 <div class="row clearfix">
-<!--                                    <div class="col-sm-6">-->
-<!--                                        <div class="form-group">-->
-<!--                                            <input class="form-control"    name="password"  id="password" placeholder="Password" type="password">-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-sm-6">-->
-<!--                                        <div class="form-group">-->
-<!--                                            <input class="form-control"  onkeyup='check();'  name="confirm_password"   id="confirm_password" placeholder="Confirm Password" type="password">-->
-<!--                                        </div>-->
-<!--                                        <span id='message'></span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-
-                            </div>
-                        </div>
-
-                        <div class="row clearfix">
-
-                            <div class="col-sm-12">
-                                <button type="submit"  id="submit" class="btn btn-primary btn-round">Submit</button>
-                                <button type="button"  class="btn btn-default btn-round btn-simple"
-                                        onclick="
-
-                                                if (window.confirm('Ary you sure to  Cancel?'))
-                                                location.href='<?php echo base_url();?>Admin/Patients/addPations'">Cancel</button>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Doctor Name" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Staff on Duty" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Ward No." type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-calendar"></i>
+                                    </span>
+                                            <input class="datetimepicker form-control" placeholder="Please choose date &amp; time..." data-dtp="dtp_8HDPR" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                        <button type="submit" class="btn btn-default btn-round btn-simple">Cancel</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        </div>
-        </div>
-        </form>
+            </form>
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('select[name="depertment"]').on('change', function() {
+            $('select[name="categoryid"]').on('change', function() {
                 var stateID = $(this).val();
                 if(stateID) {
                     $.ajax({
@@ -217,24 +253,5 @@
 
             });
         });
-        $(document).ready(function() {
-            $('select[name="depertment"]').on('change', function() {
-                var stateID = $(this).val();
-                if(stateID) {
-                    $.ajax({
-                        url:"<?php echo base_url() ?>Admin/Patients/addPatient/"+stateID,
-                        data:{id:stateID},
-                        type: "POST",
-                        success:function(data) {
-                            $('#example').html(data);
-                        }
-                    });
-                }
-                $('#example').html(  '<div class="form-group">' + '<div class="form-group" >'+ '<select class="form-control show-tick"  '+ '<option value="">Select Deperment  first</option>'+'<div>');
-                // $('#city').html('<option value="">Select state first</option>');
-
-            });
-        });
-
     </script>
 <?php include("footer.php")?>

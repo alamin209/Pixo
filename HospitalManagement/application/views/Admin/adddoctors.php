@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-7 col-md-6 col-sm-12">
                 <h2>Add Doctors
-                <small class="text-muted">Welcome to Oreo</small>
+                <small class="text-muted">Welcome to Pixo</small>
                 </h2>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12">
@@ -23,15 +23,24 @@
                 </ul>
             </div>
         </div>
+
     </div>
+
     <form class="form" method="post"  action="<?php echo base_url() ?>Admin/Doctors/save_doctors" enctype="multipart/form-data" >
     <div class="container-fluid">
 
         <div class="row clearfix">
 			<div class="col-lg-12 col-md-12 col-sm-12">
+
 				<div class="card">
 					<div class="header">
 						<h2><strong>Basic</strong> Information <small>Description text here...</small> </h2>
+                        <?php if ($this->session->flashdata('errorMessage')!=null){?>
+                            <div class="alert alert-danger" align="center"><strong><?php echo $this->session->flashdata('errorMessage');?></strong></div>
+                        <?php }
+                        elseif($this->session->flashdata('successMessage')!=null){?>
+                            <div class="alert alert-success" align="center"><strong><?php echo $this->session->flashdata('successMessage');?></strong></div>
+                        <?php }?>
 						<ul class="header-dropdown">
                             <li class="remove">
                                 <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
@@ -340,3 +349,5 @@
     });
     </script>
 <?php include("footer.php")?>
+<?php include("Js.php")?>
+

@@ -66,6 +66,10 @@
                                                 </ul>
                                                 <p class="text-muted"><?php echo $d->City?> <?php echo $d->address ?></p>
                                                 <a href="<?php echo base_url() ?>Admin/Doctors/doctorsProfile/<?php echo $d->doc_id ?>" class="btn btn-default btn-round btn-simple">View Profile</a>
+                                                <a href="<?php echo base_url() ?>Admin/Doctors/editDoctor/<?php echo $d->doc_id ?>" class="btn btn-default btn-round btn-simple">Edit Profile</a>
+                                                <a href="<?php echo base_url() ?>Admin/Doctors/doctorsProfile/<?php echo $d->doc_id ?>" class="btn btn-default btn-round btn-simple">Remove Profile</a>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -164,3 +168,5 @@
         </div>
     </section>
 <?php include("footer.php")?>
+<?php //include("Js.php")?>
+

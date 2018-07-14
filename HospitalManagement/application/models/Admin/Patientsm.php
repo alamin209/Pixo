@@ -1,24 +1,30 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Doctorsm extends CI_Model
+class Patientsm extends CI_Model
 {
-    public function getAllDoctors()
+    public function getAllStaff()
     {
-        $this->db->select('doc_id,first_name,last_name,doc_depid,Designation,doc_image,facebook,tweet,instragram,City,address');
-        $this->db->from('doctors');
+        $this->db->select('staff_id,first_name,last_name,staff_email,staff_pass,address');
+        $this->db->from('staff');
+        $query=$this->db->get();
+        return $query->result();
+    }
+
+    public function getAllWorActive()
+    {
+        $this->db->select('*');
+        $this->db->where('word_status', "0");
+        $this->db->from('word');
         $query=$this->db->get();
         return $query->result();
     }
 
 
-
-    public function insertDoctors($data)
+    public function insertpateint($data)
     {
-
         $this->security->xss_clean($data);
-
-          $this->db->insert('doctors', $data);
+        $this->db->insert('patients', $data);
         $id=$this->db->insert_id();
         return $id;
 

@@ -28,7 +28,7 @@
                             <li><a href="<?php echo base_url() ?>Admin/Doctors">All Doctors</a></li>
                             <li><a href="<?php echo base_url()?>Admin/Doctors/addDoctor">Add Doctor</a></li>
                             <li><a href="doctorprofile">Doctor Profile</a></li>
-                            <li><a href="doctorshedule">Doctor Shedule</a></li>
+                            <li><a href="<?php echo base_url()?>Admin/Shedule">Doctor Shedule</a></li>
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>Patients</span> </a>
@@ -41,8 +41,8 @@
                     </li>
                     <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>Staff & Word </span> </a>
                         <ul class="ml-menu">
-                            <li> <a href="<?php echo base_url() ?>Admin/Patients ">All Staff</a></li>
-                            <li> <a href="<?php echo base_url() ?>Admin/Patients/addPations">Add  Staff</a></li>
+                            <li> <a href="<?php echo base_url() ?>Admin/Staffword">All Staff</a></li>
+<!--                            <li> <a href="--><?php //echo base_url() ?><!--Admin/Staffword/addStaff">Add  Staff</a></li>-->
                             <li> <a href="patientprofile"> Staff Profile</a></li>
                             <li> <a href="<?php echo base_url() ?>Admin/Patients "> Add Word</a></li>
                             <li> <a href="<?php echo base_url() ?>Admin/Patients/addPations">All Word</a></li>

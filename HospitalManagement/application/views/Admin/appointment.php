@@ -119,7 +119,6 @@
                             <div class="col-sm-12">
                                 <button type="submit" class="btn btn-primary btn-round">Submit</button>
                                 <button type="button" class="btn btn-default btn-round btn-simple" onclick="
-
                                         if (window.confirm('Really Cancel?'))
                                         location.href='<?php echo base_url();?>Admin/Appointment'">Cancel</button>
                             </div>
@@ -132,3 +131,5 @@
     </div>
 </section>
 <?php include("footer.php")?>
+<?php include("Js.php")?>
+
