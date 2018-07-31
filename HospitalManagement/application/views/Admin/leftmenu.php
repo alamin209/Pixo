@@ -21,7 +21,7 @@
                         </div>
                     </li>
                     <li class="header">MAIN</li>
-                    <li class="active open"> <a href="/"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a> </li>
+                    <li class="active open"> <a href="<?php echo base_url() ?>Admin/Home"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a> </li>
                     <li class=""> <a href="<?php echo base_url() ?>Admin/Appointment"><i class="zmdi zmdi-calendar-check"></i><span>Appointment</span></a> </li>
                     <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>Doctors</span> </a>
                         <ul class="ml-menu">
@@ -43,9 +43,8 @@
                         <ul class="ml-menu">
                             <li> <a href="<?php echo base_url() ?>Admin/Staffword">All Staff</a></li>
 <!--                            <li> <a href="--><?php //echo base_url() ?><!--Admin/Staffword/addStaff">Add  Staff</a></li>-->
-                            <li> <a href="patientprofile"> Staff Profile</a></li>
-                            <li> <a href="<?php echo base_url() ?>Admin/Patients "> Add Word</a></li>
-                            <li> <a href="<?php echo base_url() ?>Admin/Patients/addPations">All Word</a></li>
+<!--                            <li> <a href="--><?php //echo base_url() ?><!--Admin/Staffword/word "> Add Word</a></li>-->
+                            <li> <a href="<?php echo base_url() ?>Admin/Staffword/allWord">All Word</a></li>
                         </ul>
                     </li>
                     <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-balance-wallet"></i><span>Payments</span> </a>
@@ -56,17 +55,14 @@
                         </ul>
                     </li>
 					<li><a href="javascript:void(0);" class="menu-toggle waves-effect waves-block toggled"><i class="zmdi zmdi-label-alt"></i><span>Departments</span> </a>
+
                         <ul class="ml-menu" style="display: block;">
-                            <li><a href="adddepartments" class=" waves-effect waves-block">Add</a></li>
-                            <li><a href="/alldepartments" class=" waves-effect waves-block">All Departments</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Cardiology</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Pulmonology</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Gynecology</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Neurology</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Urology</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Gastrology</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Pediatrician</a></li>
-                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Laboratory</a></li>
+                            <li><a href="Depertment/adddepertmet" class=" waves-effect waves-block">Add</a></li>
+                            <li><a href="<?php echo base_url() ?>Admin/Depertment " class=" waves-effect waves-block">All Departments</a></li>
+                            <?php foreach ($depertment  as $d) { ?>
+                            <li><a href="Depertment/getDepertmentDetailsByids/<?php echo $d->dep_id;?>" class=" waves-effect waves-block"><?php echo $d->dep_name?></a></li>
+                           <?php   }  ?>
+
                         </ul>
                     </li>
 					<li> <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block toggled"><i class="zmdi zmdi-lock"></i><span>Authentication</span> </a>

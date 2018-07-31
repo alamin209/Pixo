@@ -3,6 +3,16 @@
 
 class Patientsm extends CI_Model
 {
+
+    public function allPatient()
+    {
+        $this->db->select('patient_id,pat_first_name,pat_last_name,last_visit,pat_phone,enter_date,age ,patient_image,gender,address');
+        $this->db->from('patients');
+        $query=$this->db->get();
+        return $query->result();
+
+    }
+
     public function getAllStaff()
     {
         $this->db->select('staff_id,first_name,last_name,staff_email,staff_pass,address');
@@ -31,28 +41,6 @@ class Patientsm extends CI_Model
 
     }
 
-    public function getDoctorById($d_id)
-    {
-        $this->db->from('doctors');
-        $this->db->where('doc_depid', $d_id)->select('doc_id,first_name,last_name');
-        $query = $this->db->get();
-        return $query->result();
-    }
 
-
-    public function insertDoctorDegree($degreeid)
-    {
-        $error=$this->db->insert('doctrors_digrees', $degreeid);
-
-        if (empty($error))
-        {
-            return $this->db->error();
-        }
-        else {
-
-            return $error = null;
-        }
-
-    }
 
 }

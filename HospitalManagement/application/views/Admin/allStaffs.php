@@ -12,6 +12,7 @@
                         <small class="text-muted">Welcome to Pixo</small>
                     </h2>
                 </div>
+
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button">
                         <i class="zmdi zmdi-plus"></i>
@@ -52,6 +53,12 @@
                                 </div>
                             </div>
                             <div class="tab-content m-t-10">
+                                <?php if ($this->session->flashdata('successMessage')!=null){?>
+                                    <div class="alert alert-success" align="center"><strong><?php echo $this->session->flashdata('successMessage');?></strong></div>
+                                <?php }
+                                elseif($this->session->flashdata('errorMessage')!=null){?>
+                                    <div class="alert alert-danger" align="center"><strong><?php echo $this->session->flashdata('errorMessage');?></strong></div>
+                                <?php }?>
                                 <div class="tab-pane table-responsive active" id="All">
                                     <table class="table m-b-0 table-hover">
                                         <thead>
@@ -61,82 +68,68 @@
                                             <th>Staff Name</th>
                                             <th> Age</th>
                                             <th>Address</th>
-                                            <th>Number</th>
-                                            <th>Duty Time</th>
-                                            <th>Staff Detail</th>
+                                            <th>Phone  Number</th>
+                                            <th>Jonig Time</th>
+                                            <th>Staff Role</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
 
+                      <?php foreach($staff  as $s) { ?>
 
                                         <tr>
-                                            <td><span class="list-icon"><img class="patients-img" src="assets/images/xs/avatar2.jpg" alt=""></span></td>
-                                            <td><span class="list-name">KU 00934</span></td>
-                                            <td>thomas</td>
-                                            <td>26</td>
-                                            <td>123 6th St. Melbourne, FL 32904</td>
-                                            <td>404-447-6013</td>
-                                            <td>29 Jan 2018</td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
 
-                                      <td>
 
-                                            <td class="center">
-                                                <button  class="btn btn-primary btn-xs"  data-panel-id="3" onclick="selectid2(this)">
+                                            <td><span class="list-icon"><img class="patients-img" src="<?php  echo $s->Staff_image ?>" height="100px" width="100px" alt=""></span></td>
+                                            <td><span class="list-name"><?php echo $s->staff_id; ?></span></td>
+                                            <td><?php echo $s->first_name ?> <?php echo $s->last_name ?>  </td>
+                                            <td><?php echo $s->ages; ?></td>
+                                            <td><?php echo $s->address ?></td>
+                                            <td><?php echo $s->phone ?></td>
+                                            <td><?php echo $s-> joiningdate ?></td>
+                                            <td><?php echo $s->role ?> </td>
 
-                                                    Update
-                                                </button>
+                                             <td  class="center">
+                                            <button  class="btn btn-primary btn-xs"  style="padding: 3px 5px;" data-panel-id="<?php echo $s->staff_id; ?>" onclick="selectid2(this)">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
 
-                                                <button type="button" data-panel-id="4" onclick="selectid3(this)"class="btn btn-danger btn-xs">
+                                            <button type="button" data-panel-id="<?php echo $s->staff_id; ?>"   style="padding: 3px 5px;" onclick="selectid3(this)"class="btn btn-danger btn-xs">
+                                                <i class="fa fa-trash-o "></i>
+                                            </button>
 
-                                                    Delete
-                                                </button>
-                                            </td>
-                                      </td>
+                                             </td>
                                         </tr>
+
+                                        <?php } ?>
                                         </tbody>
                                     </table>
+                                    <div id="myModal" class="modal">
+                                        <br/><br/><br/>
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                            <span    class="close"  style="text-align: right" >×</span>
 
+                                            <div id="txtHint"></div>
+
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
-
-
-
-                                <td class="center">
-                                    <button  class="btn btn-primary btn-xs"  data-panel-id="" onclick="selectid2(this)">
-
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-
-                                    <button type="button" data-panel-id="" onclick="selectid3(this)"class="btn btn-danger btn-xs">
-
-                                        <i class="fa fa-trash-o "></i>
-                                    </button>
-                                </td>
                             </div>
                         </div>
 
 
+                        <div class="clearfix"> </div>
 
                     </div>
                 </div>
             </div>
         </div>
-        <div id="myModal" class="modal">
-            <br/><br/><br/>
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span    class="close"  style="text-align: right" >×</span>
 
-                <div id="txtHint"></div>
-
-            </div>
-
-        </div>
-
-        <div class="clearfix"> </div>
     </section>
 
 
@@ -169,10 +162,9 @@
     {
 
         btn = $(x).data('panel-id');
-
         $.ajax({
             type:'POST',
-            url:'<?php echo base_url("Product/getOptionalProductId")?>',
+            url:'<?php echo base_url("Admin/Staffword/getStaffById")?>',
             data:{id:btn},
             cache: false,
             success:function(data) {
@@ -188,37 +180,17 @@
     function selectid3(x)
     {
 
-        if (confirm("are you sure delete this Extra ?"))
+        if (confirm("are you sure delete this Staff ?"))
         {
 
             btn = $(x).data('panel-id');
             $.ajax({
                 type: 'POST',
-                url:'<?php echo base_url("Product/deleteOptional")?>',
+                url:'<?php echo base_url("Admin/Staffword/deletbyId")?>',
                 data: {id: btn},
                 cache: false,
                 success: function (data) {
-                    alert(' Extra deleted Successfully');
-                    location.reload();
-                }
-
-            });
-        }
-    }
-    function selectid5(x)
-    {
-
-        if (confirm("are you sure delete this Product ?"))
-        {
-
-            btn = $(x).data('panel-id');
-            $.ajax({
-                type: 'POST',
-                url:'<?php echo base_url("Product/deleteProduct")?>',
-                data: {id: btn},
-                cache: false,
-                success: function (data) {
-                    alert(' Product deleted Successfully');
+                    alert(' Staff deleted Successfully');
                     location.reload();
                 }
 
@@ -226,23 +198,9 @@
         }
     }
 
-    function selectid4(x)
-    {
 
-        btn = $(x).data('panel-id');
-        $.ajax({
-            type:'POST',
-            url:'<?php echo base_url("Product/getproductInfoById")?>',
-            data:{id:btn},
-            cache: false,
-            success:function(data) {
 
-                $('#txtHint').html(data);
 
-            }
-        });
-        modal.style.display = "block";
-    }
 
     // When the user clicks * of the modal, close it
     span.onclick = function() {

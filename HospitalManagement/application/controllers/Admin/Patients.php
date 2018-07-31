@@ -13,6 +13,8 @@ class Patients extends CI_Controller {
         $this->load->model('Admin/doctorsm');
         $this->load->model('Admin/Staffm');
         $this->load->model('Admin/Patientsm');
+        $this->load->model('Admin/Depertments');
+
 
 
 
@@ -20,8 +22,9 @@ class Patients extends CI_Controller {
 
     public function index()
     {
-
-        $this->load->view('Admin/allPatients');
+        $data['depertment'] = $this->Depertments->getAllDepertment();
+        $data['patients'] = $this->Patientsm->allPatient();
+        $this->load->view('Admin/allPatients',$data);
     }
 
     public function addPations()
@@ -44,12 +47,38 @@ class Patients extends CI_Controller {
     }
 
 
+//    public function save_patients()
+//    {
+//
+//
+//        $d_id = $this->input->post('id');
+//
+//        echo $d_id ."Hello";
+//
+//        $word_status="1";
+//
+//        $data=array(
+//
+//            'word_status'=>$word_status
+//
+//
+//        );
+//        $data = $this->Staffm->updatewordbyid($d_id, $data);
+//
+//
+//    }
+
+
+
+
+
 
     public function save_patient()
     {
+
         $config =
             array(
-                'upload_path' => './public/assets/doctorimage/',
+                'upload_path' => './public/assets/Patients/',
                 'allowed_types' => "gif|jpg|png|jpeg",
                 'overwrite' => TRUE,
                 'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
@@ -62,6 +91,7 @@ class Patients extends CI_Controller {
 
 
         $firstname = $this->input->post('firstname');
+
         $lastname = $this->input->post('lastname');
         $phone = $this->input->post('phone');
         $address = $this->input->post('address');
@@ -74,8 +104,16 @@ class Patients extends CI_Controller {
         $staff = $this->input->post('staff');
 //        $doc_pass = $this->input->post('password');
 //        $confirm_password = $this->input->post('confirm_password');
-        $word = $this->input->post('word');
+        $d_id = $this->input->post('word');
         $email = $this->input->post('email');
+//        $word_status="1";
+//
+//        $data=array(
+//            'word_status'=>$word_status
+//
+//
+//        );
+//        $word = $this->Staffm->updatewordbyid($d_id, $data);
 
 
 
@@ -84,29 +122,56 @@ class Patients extends CI_Controller {
             $data1 = $this->upload->data();
             $imagepath = base_url("public/assets/Patients/" . $data1['raw_name'] . $data1['file_ext']);
             $post['imagepath'] = $imagepath;
-            $data = array(
-                'pat_first_name' => $firstname,
-                'pat_last_name' => $lastname,
-                'pat_phone' => $phone,
-                'enter_date' => $enterdate,
+
+            if(!empty($word)) {
+                $data = array(
+                    'pat_first_name' => $firstname,
+                    'pat_last_name' => $lastname,
+                    'pat_phone' => $phone,
+                    'enter_date' => $enterdate,
+                    'age' => $age,
+                    'patient_image' => $imagepath,
+                    'gender' => $gender,
+                    'email' => $email,
 //                '$age' => $age,
-                'email' => $email,
-                'patient_image' => $imagepath,
-                'gender' => $gender,
-                'email' => $email,
-                'age' => $age,
-                'address' => $address,
-                'pat_docid' => $doctor,
-                'pat_staffid' => $staff,
-                'pat_word' => $word,
-                'patientsdepid'=>$patientsdepid
+//                'email' => $email,
+                    'address' => $address,
+                    'pat_docid' => $doctor,
+                    'pat_staffid' => $staff,
+//                    'pat_word' => $word,
+                    'patientsdepid' => $patientsdepid
 
 
-            );
-
-
-
+                );
                 $this->data['error'] = $this->Patientsm->insertpateint($data);
+            }
+                else
+                {
+                    $data = array(
+                        'pat_first_name' => $firstname,
+                        'pat_last_name' => $lastname,
+                        'pat_phone' => $phone,
+                        'enter_date' => $enterdate,
+                        'age' => $age,
+                        'patient_image' => $imagepath,
+                        'gender' => $gender,
+                        'email' => $email,
+//                '$age' => $age,
+//                'email' => $email,
+                        'address' => $address,
+                        'pat_docid' => $doctor,
+                        'pat_staffid' => $staff,
+                        'pat_word' => "0",
+                        'patientsdepid' => $patientsdepid
+
+
+                    );
+
+
+
+                    $this->data['error'] = $this->Patientsm->insertpateint($data);
+
+                }
 
 
             if (empty($this->data['error'])) {
@@ -125,4 +190,8 @@ class Patients extends CI_Controller {
 
 
       }
+
+
+
+
  }

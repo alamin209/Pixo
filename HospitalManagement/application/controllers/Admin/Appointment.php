@@ -11,7 +11,7 @@ class Appointment extends CI_Controller {
 
 
         }
-
+        $this->load->model('Admin/Depertments');
         $this->load->model('Admin/Appointmentm');
 
 

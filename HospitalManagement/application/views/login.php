@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="<?php echo base_url()?>public/assets/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>public/assets/css/main.css">
     <link rel="stylesheet" href="<?php echo base_url()?>public/assets/css/authentication.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>public/assets/css/materials/css/material-design-iconic-font.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>public/assets/css/materials/css/material-design-iconic-font.css">
     <link rel="stylesheet" href="<?php echo base_url()?>public/assets/css/color_skins.css">
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -21,7 +23,7 @@
 <body class="theme-purple authentication sidebar-collapse">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
-    <div class="container">        
+    <div class="container">
         <div class="navbar-translate n_logo">
             <a class="navbar-brand" href="javascript:void(0);" title="" target="_blank">Hospital Management</a>
             <button class="navbar-toggler" type="button">
@@ -51,11 +53,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" title="Follow us on Instagram" href="javascript:void(0);" target="_blank">                        
+                    <a class="nav-link" title="Follow us on Instagram" href="javascript:void(0);" target="_blank">
                         <i class="zmdi zmdi-instagram"></i>
                         <p class="d-lg-none d-xl-none">Instagram</p>
                     </a>
-                </li>                
+                </li>
                 <li class="nav-item">
                     <a class="nav-link btn btn-white btn-round" href="signup">SIGN UP</a>
                 </li>
@@ -69,14 +71,14 @@
     <div class="container">
         <div class="col-md-12 content-center">
             <div class="card-plain">
-                <form class="form" method="post" action="<?php echo base_url()?>login/check_user">
+                <form class="form" method="post" action="<?php echo base_url()?>login/check_user1">
                     <div class="header">
                         <div class="logo-container">
                             <img src="<?php echo base_url() ?>public/assets/images/logo.svg" alt="">
                         </div>
                         <h5>Log in</h5>
                     </div>
-                    <div class="content">                                                
+                    <div class="content">
                         <div class="input-group input-lg">
                             <input type="text" class="form-control" placeholder="Enter E-mail" name="email">
                             <span class="input-group-addon">

@@ -53,17 +53,17 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card project_widget">
                     <div class="pw_img">
-                        <img class="img-fluid" src="assets/images/image2.jpg" alt="About the image">
+                        <img class="img-fluid" src="<?php echo base_url() ?>public/assets/images/image2.jpg" alt="About the image">
                     </div>
                     <div class="pw_content">
                         <div class="pw_header">
                             <h6>Pulmonology</h6>
                             <ul class="list-unstyled team-info margin-0 p-t-15">
                                 <li class="m-r-15"><small>Team</small></li>
-                                <li><img src="assets/images/xs/avatar2.jpg" alt="Avatar"></li>
-                                <li><img src="assets/images/xs/avatar3.jpg" alt="Avatar"></li>
-                                <li><img src="assets/images/xs/avatar4.jpg" alt="Avatar"></li>
-                                <li><img src="assets/images/xs/avatar6.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar2.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar3.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar4.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar6.jpg" alt="Avatar"></li>
                                 <li><a href="javascript:void(0);" title="Add Member"><i class="zmdi zmdi-plus-circle"></i></a></li>
                             </ul>
                         </div>
@@ -84,10 +84,10 @@
                             <h6>Gynecology</h6>
                             <ul class="list-unstyled team-info margin-0 p-t-15">
                                 <li class="m-r-15"><small>Team</small></li>
-                                <li><img src="assets/images/xs/avatar2.jpg" alt="Avatar"></li>
-                                <li><img src="assets/images/xs/avatar3.jpg" alt="Avatar"></li>
-                                <li><img src="assets/images/xs/avatar4.jpg" alt="Avatar"></li>
-                                <li><img src="assets/images/xs/avatar6.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar2.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar3.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar4.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar6.jpg" alt="Avatar"></li>
                                 <li><a href="javascript:void(0);" title="Add Member"><i class="zmdi zmdi-plus-circle"></i></a></li>
                             </ul>
                         </div>
@@ -101,15 +101,15 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card project_widget">
                     <div class="pw_img">
-                        <img class="img-fluid" src="assets/images/image4.jpg" alt="About the image">
+                        <img class="img-fluid" src="<?php echo base_url() ?>public/assets/images/image4.jpg" alt="About the image">
                     </div>
                     <div class="pw_content">
                         <div class="pw_header">
                             <h6>Neurology</h6>
                             <ul class="list-unstyled team-info margin-0 p-t-15">
                                 <li class="m-r-15"><small>Team</small></li>
-                                <li><img src="assets/images/xs/avatar9.jpg" alt="Avatar"></li>
-                                <li><img src="assets/images/xs/avatar10.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar9.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar10.jpg" alt="Avatar"></li>
                                 <li><a href="javascript:void(0);" title="Add Member"><i class="zmdi zmdi-plus-circle"></i></a></li>
                             </ul>
                         </div>
@@ -123,15 +123,15 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card project_widget">
                     <div class="pw_img">
-                        <img class="img-fluid" src="assets/images/image5.jpg" alt="About the image">
+                        <img class="img-fluid" src="<?php echo base_url() ?>public/assets/images/image5.jpg" alt="About the image">
                     </div>
                     <div class="pw_content">
                         <div class="pw_header">
                             <h6>Urology</h6>
                             <ul class="list-unstyled team-info margin-0 p-t-15">
                                 <li class="m-r-15"><small>Team</small></li>
-                                <li><img src="assets/images/xs/avatar5.jpg" alt="Avatar"></li>                                
-                                <li><img src="assets/images/xs/avatar7.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar5.jpg" alt="Avatar"></li>
+                                <li><img src="<?php echo base_url() ?>public/assets/images/xs/avatar7.jpg" alt="Avatar"></li>
                                 <li><img src="assets/images/xs/avatar8.jpg" alt="Avatar"></li>
                                 <li><a href="javascript:void(0);" title="Add Member"><i class="zmdi zmdi-plus-circle"></i></a></li>
                             </ul>

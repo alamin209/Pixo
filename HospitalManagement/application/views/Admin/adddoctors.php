@@ -64,16 +64,18 @@
                         <div class="row clearfix">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select class="form-control show-tick"   name="gender"  tabindex="-98">
-                                        <option value="">- Gender -</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
+<!--                                    <select class="form-control" id="sel1">-->
+                                        <select class="form-control show-tick"   name="gender"  tabindex="-98">
+                                            <option value="">- Gender -</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+<!--                                        </select>-->
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select class="form-control show-tick"    name="speciality" tabindex="-98">
+                                    <select class="form-control"    name="speciality" tabindex="-98">
                                         <option value="">- Select Doctor speciality  -</option>
                                         <?php  foreach($depertment as $d) { ?>
                                             <option value="<?php echo $d->dep_id ?>"><?php echo $d->Dep_name ?></option>

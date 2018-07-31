@@ -8,12 +8,16 @@ class Home extends CI_Controller {
         parent::__construct();
         if (!$this->session->userdata('admin_id')) {
             return redirect('login');
+
         }
+        $this->load->model('Admin/Depertments');
+
     }
 
     public function index()
     {
+        $data['depertment'] = $this->Depertments->getAllDepertment();
 
-        $this->load->view('Admin/index');
+        $this->load->view('Admin/index',$data);
     }
 }

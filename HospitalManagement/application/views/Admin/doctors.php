@@ -46,18 +46,18 @@
                             <div class="row clearfix">
 
                                 <?php foreach($doctors  as $d) { ?>
-                                   <?php  $color = array( "" ,"blue", "khaki","parpl","pink","seagreen");
-                                   $clength = count($color);
-                                     for($x = 1; $x < $clength; $x++) {  ?>
-                                    <?php if ($d->doc_depid==$x ) {  ?>
+<!--                                   --><?php // $color = array( "" ,"blue", "khaki","parpl","pink","seagreen");
+//                                   $clength = count($color);
+//                                     for($x = 1; $x < $clength; $x++) {  ?>
+<!--                                    --><?php //if ($d->doc_depid==$x ) {  ?>
                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                    <div class="card xl-<?php echo $color[$x] ?> member-card doctor">
+                                    <div class="card xl-blue member-card doctor">
                                         <div class="body">
                                             <div class="member-thumb">
-                                                <img src="images/doctors/member1.png" class="img-fluid" alt="profile-image-Dameeeeee">
+                                                <img src="<?php echo $d->doc_image ?>" class="img-fluid" alt="profile-image-Dameeeeee">
                                             </div>
                                             <div class="detail">
-                                                <h4 class="m-b-0"><?php echo $d->first_name ?><?php echo  $d->last_name ?></h4>
+                                                <h4 class="m-b-0"><?php echo $d->first_name ?> <?php echo  $d->last_name ?></h4>
                                                 <p class="text-muted"><?php echo $d->Designation ?></p>
                                                 <ul class="social-links list-inline m-t-20">
                                                     <li><a title="facebook" href="<?php echo $d->facebook ?>"><i class="zmdi zmdi-facebook"></i></a></li>
@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
 
-                   <?php  } } } ?>
+                   <?php  }  ?>
                             </div>
                         </div>
                         <div class="tab-pane" id="Consultant">

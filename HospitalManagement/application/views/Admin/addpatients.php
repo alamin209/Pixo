@@ -22,7 +22,8 @@
             </div>
         </div>
         <div class="container-fluid">
-            <form class="form" method="post"  action="<?php echo base_url() ?>Admin/Patients/save_patient" enctype="multipart/form-data" >
+
+            <form class="form" method="post"  action="<?php echo base_url() ?>Admin/Patients/save_patient" onsubmit="return promotypefync() " enctype="multipart/form-data" >
 
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -52,12 +53,12 @@
                                 <div class="row clearfix">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <input class="form-control"  name="firstname" placeholder="First Name" type="text">
+                                            <input class="form-control"  id="firsname"   name="firstname" placeholder="First Name" type="text">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <input class="form-control" name="lastname" placeholder="Last Name" type="text">
+                                            <input class="form-control"   id="lastname" name="lastname" placeholder="Last Name" type="text">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -137,41 +138,41 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row clearfix">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <select class="form-control show-tick"    name="staff"    tabindex="-98">
-                                                <option value="">-  Staff On Duty  -</option>
-                                                <?php  foreach($staff as $s) { ?>
-                                                    <option value="<?php echo $s->staff_id ?>"><?php echo $s->first_name ?> <?php echo $s->last_name ?></option>
-                                                <?php  } ?>
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <select class="form-control show-tick"    id="word"   name="word"    tabindex="-98">
-                                                <option value="">-  Avilable Room  No -</option>
-                                                <?php  foreach($word as $s) { ?>
-                                                    <option value="<?php echo $s->word_id ?>"><?php echo $s->word_name ?></option>
-                                                <?php  } ?>
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
+<!--                                <div class="row clearfix">-->
 <!--                                    <div class="col-sm-6">-->
 <!--                                        <div class="form-group">-->
-<!--                                            <input class="form-control"    name="password"  id="password" placeholder="Password" type="password">-->
+<!--                                            <select class="form-control show-tick"    name="staff"    tabindex="-98">-->
+<!--                                                <option value="">-  Staff On Duty  -</option>-->
+<!--                                                --><?php // foreach($staff as $s) { ?>
+<!--                                                    <option value="--><?php //echo $s->staff_id ?><!--">--><?php //echo $s->first_name ?><!-- --><?php //echo $s->last_name ?><!--</option>-->
+<!--                                                --><?php // } ?>
+<!--                                            </select>-->
+<!---->
 <!--                                        </div>-->
 <!--                                    </div>-->
+<!--<!--                                    <div class="col-sm-6">-->
+<!--<!--                                        <div class="form-group">-->
+<!--<!--                                            <select class="form-control show-tick"       name="word"   onchange="registration1" id="promotype"    tabindex="-98">-->
+<!--<!--                                                <option value="">-  Avilable Room  No      -</option>--
+<!--<!--                                                --><?php //// foreach($word as $s) { ?>
+<!--<!--                                                    <option value="--><?php ////echo $s->word_id ?><!--<!--"><?php ////echo $s->word_name ?><!--<!--</option>-->
+<!--<!--                                                --><?php //// } ?>
+<!--<!--                                            </select>-->
+<!--
+<!--<!--                                        </div>
+<!--<!--                                    </div>
+<!--                                </div>-->
+                                <div class="row clearfix">
+<!--                                    <div class="col-sm-6">
+<!--                                        <div class="form-group">
+<!--                                            <input class="form-control"    name="password"  id="password" placeholder="Password" type="password">
+<!--                                        </div>
+<!--                                    </di>
 <!--                                    <div class="col-sm-6">-->
-<!--                                        <div class="form-group">-->
-<!--                                            <input class="form-control"  onkeyup='check();'  name="confirm_password"   id="confirm_password" placeholder="Confirm Password" type="password">-->
+<!--                                        <div class="form-group">
+<!--                                            <input class="form-control"  onkeyup='check();'  name="confirm_password"   id="confirm_password" placeholder="Confirm Password" type="password">
 <!--                                        </div>-->
-<!--                                        <span id='message'></span>-->
+<!--                                        <span id='message'></span>
 <!--                                    </div>-->
 <!--                                </div>-->
 
@@ -208,6 +209,7 @@
                         data:{id:stateID},
                         type: "POST",
                         success:function(data) {
+
                             $('#example').html(data);
                         }
                     });
@@ -217,24 +219,51 @@
 
             });
         });
-        $(document).ready(function() {
-            $('select[name="depertment"]').on('change', function() {
-                var stateID = $(this).val();
-                if(stateID) {
-                    $.ajax({
-                        url:"<?php echo base_url() ?>Admin/Patients/addPatient/"+stateID,
-                        data:{id:stateID},
-                        type: "POST",
-                        success:function(data) {
-                            $('#example').html(data);
-                        }
-                    });
-                }
-                $('#example').html(  '<div class="form-group">' + '<div class="form-group" >'+ '<select class="form-control show-tick"  '+ '<option value="">Select Deperment  first</option>'+'<div>');
-                // $('#city').html('<option value="">Select state first</option>');
+        //$(document).ready(function() {
+        //    $('select[name="depertment"]').on('change', function() {
+        //        var stateID = $(this).val();
+        //        if(stateID) {
+        //            $.ajax({
+        //                url:"<?php //echo base_url() ?>//Admin/Patients/addPatient/"+stateID,
+        //                data:{id:stateID},
+        //                type: "POST",
+        //                success:function(data) {
+        //                    $('#example').html(data);
+        //                }
+        //            });
+        //        }
+        //        $('#example').html(  '<div class="form-group">' + '<div class="form-group" >'+ '<select class="form-control show-tick"  '+ '<option value="">Select Deperment  first</option>'+'<div>');
+        //        // $('#city').html('<option value="">Select state first</option>');
+        //
+        //    });
+        //});
 
-            });
-        });
+
 
     </script>
+
+<script>
+//    function  registration1()
+//    {
+//        var stateID = document.getElementById('promotype').value;
+//
+//        $.ajax({
+//            type:'POST',
+//            url:"http://localhost/HospitalManagement/Admin/Patients/save_patients/"+stateID,
+//            data:{id:stateID},
+//            cache: false,
+//            success:function(data) {
+//
+//
+//                alert(data);
+//
+//                // $('#example').html(data);
+//
+//            }
+//        });
+//    }
+//
+//
+//
+//</script>
 <?php include("footer.php")?>
