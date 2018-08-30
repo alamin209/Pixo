@@ -33,69 +33,99 @@ class Staffword extends CI_Controller {
     }
 
        public function save_staff()
-    {
 
-          $config=
-           array (
-            'upload_path'=>'./public/assets/Staff/',
-            'allowed_types' => "gif|jpg|png|jpeg",
-            'overwrite' => TRUE,
-            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
-            'max_width' => "1024"
+       {
 
-          );
 
-       $this->load->library('upload', $config);
-      $first_name=$this->input->post('first_name');
-      $last_name=$this->input->post('last_name');
-      $staff_email=$this->input->post('staff_email');
-      $staff_pass=$this->input->post('staff_pass');
-      $address=$this->input->post('address');
-      $phone=$this->input->post('phone');
-     $age=$this->input->post('age');
-      $gender=$this->input->post('gender');
-      $Joiningdate=$this->input->post('Joiningdate');
-      $staff_status=$this->input->post('staff_status');
-      $eduction=$this->input->post('eduction');
-      $role=$this->input->post('role');
-       $staff_confirmpassword=$this->input->post('confirm_password');
+        $config=
+            array (
+                'upload_path'=>'./public/assets/Staff/',
+                'allowed_types' => "gif|jpg|png|jpeg",
+                'overwrite' => TRUE,
+                'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+                'max_height' => "768",
+                'max_width' => "1024"
 
-    if($this->upload->do_upload('s_Photo')) {
+            );
+        $this->load->library('upload', $config);
 
-        $data1 = $this->upload->data();
-        $imagepath = base_url("public/assets/Staff/" . $data1['raw_name'] . $data1['file_ext']);
-        $post['imagepath'] = $imagepath;
-        $data = array(
-            'first_name' => $first_name,
-            'last_name' => $last_name,
-            'staff_email' => $staff_email,
-            'staff_pass' => $staff_pass,
-            'address' => $address,
-            'phone' => $phone,
-            'ages' => $age,
-            'gender' => $gender,
-            'Staff_image'=>$imagepath,
-            'joiningdate' => $Joiningdate,
-            'staff_status' => $staff_status,
-            'staff_confirmpassword'=>$staff_confirmpassword,
-            'eduction' => $eduction,
-            'role' => $role
 
-        );
-        $this->data['error']= $this->Staffm->insertStaf($data);
+        $firstname = $this->input->post('firstname');
+        $lastname = $this->input->post('lastname');
+        $date_of_Birth = $this->input->post('birth_date');
+        $gender = $this->input->post('gender');
+        $spiciality = $this->input->post('speciality');
+        $designetion = $this->input->post('designetion');
+        $admin_name = $this->input->post('admin_name');
+        $d_image = $_FILES["s_Photo"]["name"];
+        $doc_pass = $this->input->post('password');
+        $confirm_password = $this->input->post('confirm_password');
+        $address = $this->input->post('address');
+        $tweet = $this->input->post('tweet');
+        $join_date= $this->input->post('Join_date');
+        $user_activation_status = $this->input->post('status');
+        $city = $this->input->post('city');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
+        $employee = $this->input->post('employee');
+        $staff_eduction = $this->input->post('staff_eduction');
+           $adminpanel = $this->input->post('adminpanel');
 
-        if (empty($this->data['error'])) {
 
-            $this->session->set_flashdata('successMessage', ' Staff  Added Successfully');
-            redirect('Admin/Staffword');
+        if($this->upload->do_upload('s_Photo')) {
 
-        } else {
+            $data1 = $this->upload->data();
+            $imagepath = base_url("public/assets/Staff/" . $data1['raw_name'] . $data1['file_ext']);
+            $post['imagepath'] = $imagepath;
+            $data = array(
+                'first_name' => $firstname,
+                'last_name' => $lastname,
+                'admin_type' => $employee,
+                'admin_name' => $admin_name,
+                'admin_email' => $email,
+                'pass' => $doc_pass,
+                'confirmpassword' => $confirm_password,
+                'designetion' => $designetion,
+                'user_activation_status' => $user_activation_status,
+                'phone' => $phone,
+                'city' => $city,
+                'date_of_Birth' => $date_of_Birth,
+                'gender' => $gender,
+//               'description' => $opinion,
+                'spiciality_depid' => $spiciality,
+//                'tweet' => $tweet,
+                'address' => $address,
+                'join_date' => $join_date,
+                'staff_image' => $imagepath,
+//                'facebook' => $facebook,
+               'adminpanel' => $adminpanel,
+              'staff_eduction'=>$staff_eduction
 
-            $this->session->set_flashdata('errorMessage', 'Some thing Went Wrong !! Please Try Again!!');
-            redirect('Admin/Staffword');
+            );
+
+
+
+            $data['error'] = $this->Staffm->insertStaff($data);
 
         }
+        else
+        {
+            echo "<script> alert('Image was not upload proparly ')</script>";
+        }
+
+
+            if (empty($this->data['error'])) {
+
+                $this->session->set_flashdata('successMessage', ' Staff  Added Successfully');
+                redirect('Admin/Staffword');
+
+            } else {
+
+                $this->session->set_flashdata('errorMessage', 'Some thing Went Wrong !! Please Try Again!!');
+                redirect('Admin/Staffwordr');
+
+            }
+
 
 
 
@@ -104,7 +134,7 @@ class Staffword extends CI_Controller {
     }
 
 
-  }
+
 
     public function getStaffById()
    {
@@ -129,19 +159,29 @@ class Staffword extends CI_Controller {
         );
 
     $this->load->library('upload', $config);
-    $first_name=$this->input->post('first_name');
-    $last_name=$this->input->post('last_name');
-    $staff_email=$this->input->post('staff_email');
-    $staff_pass=$this->input->post('staff_pass');
-    $address=$this->input->post('address');
-    $phone=$this->input->post('phone');
-    $age=$this->input->post('age');
-    $gender=$this->input->post('gender');
-    $Joiningdate=$this->input->post('Joiningdate');
-    $staff_status=$this->input->post('staff_status');
-    $eduction=$this->input->post('eduction');
-    $role=$this->input->post('role');
-    $staff_confirmpassword=$this->input->post('confirm_password');
+      $firstname = $this->input->post('firstname');
+      $lastname = $this->input->post('lastname');
+      $date_of_Birth = $this->input->post('birth_date');
+      $gender = $this->input->post('gender');
+      $spiciality = $this->input->post('speciality');
+      $designetion = $this->input->post('designetion');
+      $admin_name = $this->input->post('admin_name');
+      $d_image = $_FILES["s_Photo"]["name"];
+      $doc_pass = $this->input->post('password');
+      $confirm_password = $this->input->post('confirm_password');
+      $address = $this->input->post('address');
+      $tweet = $this->input->post('tweet');
+      $join_date= $this->input->post('Join_date');
+      $user_activation_status = $this->input->post('status');
+      $city = $this->input->post('city');
+      $phone = $this->input->post('phone');
+      $email = $this->input->post('email');
+      $employee = $this->input->post('employee');
+      $staff_eduction = $this->input->post('staff_eduction');
+      $adminpanel = $this->input->post('adminpanel');
+
+
+
 
     if( $this->upload->do_upload('s_Photo')) {
 
@@ -149,30 +189,37 @@ class Staffword extends CI_Controller {
         $imagepath = base_url("public/assets/Staff/" . $data1['raw_name'] . $data1['file_ext']);
         $post['imagepath'] = $imagepath;
         $data = array(
-            'first_name' => $first_name,
-            'last_name' => $last_name,
-            'staff_email' => $staff_email,
-            'staff_pass' => $staff_pass,
-            'address' => $address,
+            'first_name' => $firstname,
+            'last_name' => $lastname,
+            'admin_type' => $employee,
+            'admin_name' => $admin_name,
+            'admin_email' => $email,
+            'pass' => $doc_pass,
+            'confirmpassword' => $confirm_password,
+            'designetion' => $designetion,
+            'user_activation_status' => $user_activation_status,
             'phone' => $phone,
-            'ages' => $age,
+            'city' => $city,
+            'date_of_Birth' => $date_of_Birth,
             'gender' => $gender,
-            'Staff_image'=>$imagepath,
-            'joiningdate' => $Joiningdate,
-            'staff_status' => $staff_status,
-            'staff_confirmpassword'=>$staff_confirmpassword,
-            'eduction' => $eduction,
-            'role' => $role
+            'adminpanel' => $adminpanel,
+            'spiciality_depid' => $spiciality,
+//                'tweet' => $tweet,
+            'address' => $address,
+            'join_date' => $join_date,
+            'staff_image' => $imagepath,
+//                'facebook' => $facebook,
+//                'google_plus' => $google_plus
+            'staff_eduction'=>$staff_eduction
 
         );
 
 
-
-        $this->data['error']= $this->Staffm->updateStaf($id,$data);
+        $this->data['error'] = $this->Staffm->updateStaff($id, $data);
 
         if (empty($this->data['error'])) {
 
-            $this->session->set_flashdata('successMessage','Staff Info  Updated Successfully');
+            $this->session->set_flashdata('successMessage', 'Staff Info  Updated Successfully');
             redirect('Admin/Staffword');
 
         } else {
@@ -181,50 +228,23 @@ class Staffword extends CI_Controller {
             redirect('Admin/Staffword');
 
         }
+    }
+        else
 
-       }
+        {
+            echo "";
+        }
 
-
-       else
-       {
-           $data = array(
-               'first_name' => $first_name,
-               'last_name' => $last_name,
-               'staff_email' => $staff_email,
-               'staff_pass' => $staff_pass,
-               'address' => $address,
-               'phone' => $phone,
-               'ages' => $age,
-               'gender' => $gender,
-               'joiningdate' => $Joiningdate,
-               'staff_status' => $staff_status,
-               'staff_confirmpassword'=>$staff_confirmpassword,
-               'eduction' => $eduction,
-               'role' => $role
-
-           );
-
-
-           $this->data['error']= $this->Staffm->updateStaf($id,$data);
-
-           if (empty($this->data['error'])) {
-
-               $this->session->set_flashdata('successMessage','Staff Info  Updated Successfully');
-               redirect('Admin/Staffword');
-
-           } else {
-
-               $this->session->set_flashdata('errorMessage', 'Some thing Went Wrong !! Please Try Again!!');
-               redirect('Admin/Staffword');
-
-           }
-
-       }
+    }
 
 
 
 
-  }
+
+
+
+
+
 
 
      public function deletbyId()

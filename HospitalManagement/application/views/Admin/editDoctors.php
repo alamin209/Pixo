@@ -80,19 +80,7 @@
                                             <input class="form-control" type="date" placeholder="Date of Birth"  name="birth_date" type="text">
                                         </div>
                                     </div>
-                                    <!--                            <div class="col-sm-3">-->
-                                    <!--                                <div class="btn-group bootstrap-select form-control show-tick"><button type="button" class="btn dropdown-toggle bs-placeholder btn-round btn-simple" data-toggle="dropdown" role="button" title="- Gender -"><span class="filter-option pull-left">- Gender -</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu" role="combobox"><ul class="dropdown-menu inner" role="listbox" aria-expanded="false"><li data-original-index="0" class="selected"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="true"><span class="text">- Gender -</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Male</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Female</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>-->
-                                    <!--                                    <select class="form-control show-tick" tabindex="-98">-->
-                                    <!--                                    <option value="">- Gender -</option>-->
-                                    <!--                                    <option value="10">Male</option>-->
-                                    <!--                                    <option value="20">Female</option>-->
-                                    <!--                                </select></div>-->
-                                    <!--                            </div>-->
-                                    <!--                            <div class="col-sm-3">-->
-                                    <!--                                <div class="form-group">-->
-                                    <!--                                    <input class="form-control" placeholder="Speciality" type="text">-->
-                                    <!--                                </div>-->
-                                    <!--                            </div>-->
+
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <input class="form-control" placeholder="Phone" name="phone" type="text">
@@ -131,12 +119,7 @@
                                             <input class="btn btn-success" type="button" name = 'add' value='Add'  onclick="selectid2()">
                                         </div>
                                     </div>
-                                    <!--                            <div class="col-sm-6">-->
-                                    <!--                                <label class="control-label" for="userfile">If you want to add any Optional Information</label>-->
-                                    <!--                                <div class="form-group">-->
-                                    <!--                                    <input class="form-control" placeholder="Last Name" name="lastname" type="text">-->
-                                    <!--                                </div>-->
-                                    <!--                            </div>-->
+
                                     <div id="showattr" style="display: none">
                                         <!--                                <div class="col-sm-6">-->
 
@@ -252,12 +235,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <!--                                                <div class="col-sm-6">-->
-                                                        <!--                                                    <div class="input-group">-->
-                                                        <!--                                                        <span class="input-group-addon"><i class="zmdi zmdi-dribbble"></i></span>-->
-                                                        <!--                                                        <input class="form-control" placeholder="dribbble" type="text">-->
-                                                        <!--                                                    </div>-->
-                                                        <!--                                                </div>-->
+
                                                     </div>
                                                 </div>
                                             </div>

@@ -5,8 +5,11 @@ class Staffm extends CI_Model
 {
     public function getAllStaff()
     {
-        $this->db->select('staff_id,first_name,last_name,staff_email,staff_pass,address,Staff_image,ages,phone,role,joiningdate');
-        $this->db->from('staff');
+        $this->db->select('admin_id,first_name,last_name,admin_type,admin_name,admin_email,pass,confirmpassword,designetion,phone,address,city,user_activation_status,gender,staff_image,join_date');
+        $this->db->where('user_activation_status', "1");
+        $this->db->where('admin_type  =', "employee");
+        $this->db->where('designetion !=', "doctor");
+        $this->db->from('admin');
         $query=$this->db->get();
         return $query->result();
     }
@@ -25,17 +28,17 @@ class Staffm extends CI_Model
     public function getStaffById($id)
     {
         $this->db->select('*');
-        $this->db->from('staff');
-        $this->db->where('staff_id', $id);
+        $this->db->from('admin');
+        $this->db->where('admin_id', $id);
         $query = $this->db->get();
         return $query->result();
     }
 
-public function updateStaf($id,$data)
+public function updateStaff($id, $data)
 {
-    $this->db->select('Staff_image');
-    $this->db->where('staff_id',$id);
-    $this->db->from('staff');
+    $this->db->select('staff_image');
+    $this->db->where('admin_id',$id);
+    $this->db->from('admin');
     $query = $this->db->get();
     foreach ($query->result() as $itemImage){
         $oldImage = $itemImage->Staff_image;
@@ -44,15 +47,15 @@ public function updateStaf($id,$data)
     $path   = 'public/assets/Staff/'.$oldImage;
     if (!file_exists($path)){
 
-        $this->db->where('staff_id',$id);
-        $this->db->update('staff', $data);
+        $this->db->where('admin_id',$id);
+        $this->db->update('admin', $data);
         //return 0;
     }
     else{
 
         unlink(FCPATH.$path);
-        $this->db->where('staff_id',$id);
-        $this->db->update('staff', $data);
+        $this->db->where('admin_id',$id);
+        $this->db->update('admin', $data);
 
     }
 
@@ -62,7 +65,7 @@ public function updateStaf($id,$data)
 
 public function deleteStaffById($id)
 {
-    $this->db->where('staff_id',$id)->delete('staff');
+    $this->db->where('admin_id',$id)->delete('admin');
 
 }
 
@@ -90,11 +93,9 @@ public function deleteStaffById($id)
 
 
 
-      public function insertStaf($data)
+      public function insertStaff($data)
       {
-
-          $error=$this->db->insert('staff', $data);
-
+          $error=$this->db->insert('admin', $data);
           if (empty($error))
           {
               return $this->db->error();

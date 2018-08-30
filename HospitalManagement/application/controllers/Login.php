@@ -21,6 +21,7 @@ class Login extends CI_Controller {
 
         $result = $this->loginm->validate_user($_POST);
 
+
         if (!empty($result)) {
 //            $data1 = array(
 //                'sourceIp' => $this->input->ip_address(),
@@ -40,14 +41,14 @@ class Login extends CI_Controller {
             $id=$this->session->set_userdata($data);
 
 
-            if ($this->session->userdata('admin_type') == "admin") {
+            if ($this->session->userdata('admin_type') =="admin") {
                 redirect('Admin/Home');
             }
 
             else{
                 echo "<script>
                         alert('wrong username or password');
-                     window.location.href='". base_url() ."';
+                     window.location.href='". base_url(admin) ."';
 					
                 </script>";
             }
@@ -59,6 +60,8 @@ class Login extends CI_Controller {
 
         $result = $this->loginm->validate_user1($_POST);
 
+
+
         if (!empty($result)) {
 //            $data1 = array(
 //                'sourceIp' => $this->input->ip_address(),
@@ -72,19 +75,33 @@ class Login extends CI_Controller {
                 'admin_id' => $result->userId,
                 'admin_type' => $result->admin_type,
                 'Designetion'=>$result->Designetion,
+                'adminpanel'=>$result->adminpanel,
                 'loggedin' => "true",
 //                'loginId' => $loginId,
             );
             $id=$this->session->set_userdata($data);
 
 
-            if ($this->session->userdata('admin_type') == "admin") {
-                redirect('Admin/Home');
+
+            if ($this->session->userdata('admin_type') == "employee" && $this->session->userdata('Designetion') == "doctor" ) {
+
+
+
+
+                redirect('Doctor/Home');
             }
-//            elseif ($this->session->userdata('userType') == "cus")
-//            {
-//
-//            }
+
+            elseif ($this->session->userdata('admin_type') == "employee" && $this->session->userdata('Designetion') != "doctor" && $this->session->userdata('adminpanel')=="yes"  )
+            {
+
+                redirect('Staff/Home');
+
+            }
+            elseif ($this->session->userdata('admin_type') == "employee" && $this->session->userdata('Designetion') != "doctor"  && $this->session->userdata('adminpanel')=="no" )
+            {
+
+                 echo "I am not admin panel member";
+            }
             //print_r($result);
             else{
                 echo "<script>

@@ -66,7 +66,8 @@
                                             <th>Staff Photo</th>
                                             <th>Staff ID</th>
                                             <th>Staff Name</th>
-                                            <th> Age</th>
+                                            <th>User name</th>
+                                            <th> Email</th>
                                             <th>Address</th>
                                             <th>Phone  Number</th>
                                             <th>Jonig Time</th>
@@ -81,21 +82,23 @@
                                         <tr>
 
 
-                                            <td><span class="list-icon"><img class="patients-img" src="<?php  echo $s->Staff_image ?>" height="100px" width="100px" alt=""></span></td>
-                                            <td><span class="list-name"><?php echo $s->staff_id; ?></span></td>
+                                            <td><span class="list-icon"><img class="patients-img" src="<?php  echo $s->staff_image ?>" height="100px" width="100px" alt=""></span></td>
+                                            <td><span class="list-name"><?php echo $s->admin_id; ?></span></td>
                                             <td><?php echo $s->first_name ?> <?php echo $s->last_name ?>  </td>
-                                            <td><?php echo $s->ages; ?></td>
+                                            <td><?php echo $s->admin_name ?>   </td>
+<!--                                            <td>--><?php //echo $s->ages; ?><!--</td>-->
+                                            <td><?php echo $s->admin_email; ?></td>
                                             <td><?php echo $s->address ?></td>
                                             <td><?php echo $s->phone ?></td>
-                                            <td><?php echo $s-> joiningdate ?></td>
-                                            <td><?php echo $s->role ?> </td>
+                                            <td><?php echo $s-> join_date ?></td>
+                                            <td><?php echo $s->designetion ?> </td>
 
                                              <td  class="center">
-                                            <button  class="btn btn-primary btn-xs"  style="padding: 3px 5px;" data-panel-id="<?php echo $s->staff_id; ?>" onclick="selectid2(this)">
+                                            <button  class="btn btn-primary btn-xs"  style="padding: 3px 5px;" data-panel-id="<?php echo $s->admin_id; ?>" onclick="selectid2(this)">
                                                 <i class="fa fa-pencil"></i>
                                             </button>
 
-                                            <button type="button" data-panel-id="<?php echo $s->staff_id; ?>"   style="padding: 3px 5px;" onclick="selectid3(this)"class="btn btn-danger btn-xs">
+                                            <button type="button" data-panel-id="<?php echo $s->admin_id; ?>"   style="padding: 3px 5px;" onclick="selectid3(this)"class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash-o "></i>
                                             </button>
 

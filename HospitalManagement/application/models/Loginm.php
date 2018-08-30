@@ -3,36 +3,28 @@ class Loginm extends CI_Model{
     public function validate_user($data){
         $userEmail=$this->input->post('email');
         $password=$this->input->post('password');
-        $this->db->select('u.admin_id as userId,u.admin_type,u.admin_email,u.pass,u.admin_type,u.Designetion,u.admin_name');
+        $this->db->select('u.admin_id as userId,u.admin_type,u.admin_email,u.pass,u.admin_type,u.Designetion,u.admin_name,u.adminpanel');
         $this->db->where('admin_email',$userEmail);
         $this->db->where('pass',$password);
         $this->db->where('admin_type',"admin");
-//        $this->db->where('fkUserType',"Admin");
+       //$this->db->where('fkUserType',"Admin");
         $this->db->from('admin u');
         $query = $this->db->get();
         return $query->row();
     }
 
 
-    public function  validate_user1($data)
-
-    {
-
+    public function validate_user1($data){
         $userEmail=$this->input->post('email');
         $password=$this->input->post('password');
-
-        print_r($userEmail);
-        print_r($password);
-        $this->db->select('u.doc_id as userId,  s.staff_id as staff_id , s.staff_pass ,s.role, s.staff_email as  staff_email,s.last_name as last_name  u.pass,u.admin_type,u.Designetion,u.admin_name');
+        $this->db->select('u.admin_id as userId,u.admin_type,u.admin_email,u.pass,u.admin_type,u.Designetion,u.admin_name,u.adminpanel');
         $this->db->where('admin_email',$userEmail);
         $this->db->where('pass',$password);
-        $this->db->where('admin_type',"admin");
-//        $this->db->where('fkUserType',"Admin");
+        //$this->db->where('admin_type',"admin");
+        //$this->db->where('admin_type',"employee");
         $this->db->from('admin u');
         $query = $this->db->get();
         return $query->row();
-
-
     }
 
 

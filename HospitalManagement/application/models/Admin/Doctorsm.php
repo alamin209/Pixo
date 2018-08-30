@@ -18,7 +18,7 @@ class Doctorsm extends CI_Model
 
         $this->security->xss_clean($data);
 
-          $this->db->insert('doctors', $data);
+          $this->db->insert('admin', $data);
         $id=$this->db->insert_id();
         return $id;
 

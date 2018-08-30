@@ -52,12 +52,12 @@
                         <div class="row clearfix">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="First Name" name="firstname" type="text">
+                                    <input class="form-control" placeholder="First Name" name="firstname" type="text" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Last Name" name="lastname" type="text">
+                                    <input class="form-control" placeholder="Last Name" name="lastname" type="text" required>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
 <!--                                    <select class="form-control" id="sel1">-->
-                                        <select class="form-control show-tick"   name="gender"  tabindex="-98">
+                                        <select class="form-control show-tick"   name="gender"  tabindex="-98" required>
                                             <option value="">- Gender -</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select class="form-control"    name="speciality" tabindex="-98">
+                                    <select class="form-control"    name="speciality" tabindex="-98" required>
                                         <option value="">- Select Doctor speciality  -</option>
                                         <?php  foreach($depertment as $d) { ?>
                                             <option value="<?php echo $d->dep_id ?>"><?php echo $d->Dep_name ?></option>
@@ -85,10 +85,18 @@
                                 </div>
                             </div>
                         </div>
+                                <input class="form-control"   name="designetion"   value="doctor" type="hidden">
                         <div class="row clearfix">
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <span>Data of Birth</span>
                                 <div class="form-group">
-                                    <input class="form-control" type="date" placeholder="Date of Birth"  name="birth_date" type="text">
+                                    <input class="form-control" type="date" placeholder="Date of Birth"  required  name="birth_date" type="text">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <span>Joining date</span>
+                                <div class="form-group">
+                                    <input class="form-control" type="date" placeholder="Date of Birth"  required name="Join_date" type="text">
                                 </div>
                             </div>
 <!--                            <div class="col-sm-3">-->
@@ -104,44 +112,66 @@
 <!--                                    <input class="form-control" placeholder="Speciality" type="text">-->
 <!--                                </div>-->
 <!--                            </div>-->
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Phone" name="phone" type="text">
+                                    <input class="form-control" placeholder="Phone" name="phone" type="text" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Your Email" name="email" type="text">
+                                    <input class="form-control" placeholder="Enter Your Email" name="email" type="text" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Website URL"   name="url"  type="text">
+                                    <select class="form-control show-tick"   name="status"  tabindex="-98" required>
+                                        <option value="">- Doctor Activation Status-</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                         <div class="drag-icon-cph">Upload Photo </div>
-                                        <input type="file" name="d_Photo" placeholder="Doctor Image"  class="form-control input-height" />
-
+                                        <input type="file" name="d_Photo" placeholder="Doctor Image"  required class="form-control input-height" />
 
                             </div>
+
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Doctor Degree" name="degree[]" type="text">
+                                    <input class="form-control"  name="address"   required  placeholder="Give the address " type="text">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Instituted Name " name="insti[]" type="text">
+                                    <input class="form-control"  name="city"  placeholder="city" type="text" required>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Doctor Degree" name="degree[]" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Instituted Name " name="insti[]" type="text" required>
+                                </div>
+                            </div>
+
+                            <input class="form-control"   name="employee" value="employee" type="hidden">
+
+
                             <div id="Item_price"> </div>
                             <div class="control-group">
                                 <label class="control-label" for="userfile">If you want to add More Degree</label>
                                 <div class="controls">
                                     <input class="btn btn-success" type="button" name = 'add' value='Add'  onclick="selectid2()">
                                 </div>
+
                             </div>
+
+
 <!--                            <div class="col-sm-6">-->
 <!--                                <label class="control-label" for="userfile">If you want to add any Optional Information</label>-->
 <!--                                <div class="form-group">-->
@@ -194,6 +224,7 @@
                                                     <input class="form-control"  name="username"  placeholder="User Name" type="text">
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <input class="form-control"    name="password"  id="password" placeholder="Password" type="password">
@@ -213,7 +244,7 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="header">
-                                            <h2><strong>Doctor</strong> Social Media Info <small>Description text here...</small> </h2>
+                                            <h2><strong>Doctor</strong>  de <small>Description text here...</small> </h2>
                                             <ul class="header-dropdown">
                                                 <li class="remove">
                                                     <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
@@ -240,12 +271,12 @@
                                                         <input class="form-control"   name="google_plus" placeholder="Google Plus" type="text">
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="zmdi zmdi-instagram"></i></span>
-                                                        <input class="form-control"   name="instragram" placeholder="Google Plus" type="text">
-                                                    </div>
-                                                </div>
+<!--                                                <div class="col-sm-6">-->
+<!--                                                    <div class="input-group">-->
+<!--                                                        <span class="input-group-addon"><i class="zmdi zmdi-instagram"></i></span>-->
+<!--                                                        <input class="form-control"   name="instragram" placeholder="Google Plus" type="text">-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
 
 
                                                 <div class="col-sm-6">
@@ -254,15 +285,15 @@
                                                         <input class="form-control"  name="linkdin" placeholder="LinkedIN" type="text">
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <select class="form-control show-tick"   name="status"  tabindex="-98">
-                                                            <option value="">- Doctor Activation Status-</option>
-                                                            <option value="1">Active</option>
-                                                            <option value="0">Inactive</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+<!--                                                <div class="col-sm-6">-->
+<!--                                                    <div class="form-group">-->
+<!--                                                        <select class="form-control show-tick"   name="status"  tabindex="-98">-->
+<!--                                                            <option value="">- Doctor Activation Status-</option>-->
+<!--                                                            <option value="1">Active</option>-->
+<!--                                                            <option value="0">Inactive</option>-->
+<!--                                                        </select>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
 <!--                                                <div class="col-sm-6">-->
 <!--                                                    <div class="input-group">-->
 <!--                                                        <span class="input-group-addon"><i class="zmdi zmdi-dribbble"></i></span>-->

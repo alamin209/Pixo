@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2018 at 01:22 PM
+-- Generation Time: Aug 01, 2018 at 02:16 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -30,23 +30,39 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `admin_id` int(10) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
   `admin_type` varchar(255) NOT NULL,
   `admin_name` varchar(255) NOT NULL,
   `admin_email` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `Designetion` varchar(255) NOT NULL,
+  `confirmpassword` varchar(255) NOT NULL,
+  `designetion` varchar(255) NOT NULL,
   `phone` int(12) NOT NULL,
   `address` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `user_activation_status` int(1) NOT NULL
+  `user_activation_status` int(1) NOT NULL,
+  `date_of_Birth` datetime NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `spiciality_depid` int(10) DEFAULT NULL,
+  `doc_image` varchar(100) DEFAULT NULL,
+  `staff_image` varchar(255) DEFAULT NULL,
+  `join_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `admin_type`, `admin_name`, `admin_email`, `pass`, `Designetion`, `phone`, `address`, `city`, `user_activation_status`) VALUES
-(1, 'admin', 'Pixo It', 'admin@gmail.com', 'admin', 'Ceo', 1824225928, 'savar', 'dhaka', 1);
+INSERT INTO `admin` (`admin_id`, `first_name`, `last_name`, `admin_type`, `admin_name`, `admin_email`, `pass`, `confirmpassword`, `designetion`, `phone`, `address`, `city`, `user_activation_status`, `date_of_Birth`, `gender`, `spiciality_depid`, `doc_image`, `staff_image`, `join_date`) VALUES
+(1, '', '', 'admin', 'Pixo It', 'admin@gmail.com', 'admin', '', 'Ceo', 1824225928, 'savar', 'dhaka', 1, '0000-00-00 00:00:00', '', 0, '', '', '0000-00-00 00:00:00'),
+(2, 'alamin', '', 'employee', 'alamin', 'alamin@gmail.com', 'admin', '', 'doctor', 1824225928, 'dhaka', 'dhaka', 1, '2018-08-07 00:00:00', 'male', 0, 'sdsdsds', '', '2018-08-08 00:00:00'),
+(3, 'dfdf', 'gggggggggg', 'employee', 'admin', 'admin@gmail.com', 'admin@123', 'admin@123', '', 1824225928, '', '', 1, '2018-08-07 00:00:00', 'male', 6, 'http://localhost/HospitalManagement/public/assets/doctorimage/Capture4.PNG', NULL, '2018-08-24 00:00:00'),
+(4, 'alamin', 'gggggggggg', 'employee', 'admin', 'admin@gmail.com', 'admin@123', 'admin@123', 'doctor', 1824225928, '', '', 1, '2018-08-01 00:00:00', 'male', 1, 'http://localhost/HospitalManagement/public/assets/doctorimage/2.PNG', NULL, '2018-08-02 00:00:00'),
+(5, 'alamin', 'gggggggggg', 'employee', 'admin', 'admin@gmail.com', 'admin@123', 'admin@123', 'doctor', 1824225928, '', '', 1, '2018-09-02 00:00:00', 'male', 1, 'http://localhost/HospitalManagement/public/assets/doctorimage/1.PNG', NULL, '2018-08-31 00:00:00'),
+(6, 'alamin', 'hossain', 'employee', 'admin@gmail.com', 'admin@gmail.com', 'admin@123', 'admin@123', 'doctor', 1822, '', 'admin', 1, '2018-08-20 00:00:00', 'female', 6, 'http://localhost/HospitalManagement/public/assets/doctorimage/Capture4.PNG', NULL, '2018-08-29 00:00:00'),
+(7, 'alamin', 'hossain', 'employee', 'admin', 'alamin@gmail.com', 'admin@123', 'admin@123', 'doctor', 1824225928, 'dhaka', 'admin', 1, '2018-08-08 00:00:00', 'male', 1, 'http://localhost/HospitalManagement/public/assets/doctorimage/Capture3.PNG', NULL, '2018-08-10 00:00:00'),
+(8, 'dfdf', 'dddddddddddddddddddd', 'employee', 'admin@gmail.com', 'admin@gmail.com', 'admin', 'admin', 'doctor', 1824225928, 'dhaka', 'admin@gmail.com', 0, '2018-08-14 00:00:00', 'male', 8, 'http://localhost/HospitalManagement/public/assets/doctorimage/Capture3.PNG', NULL, '2018-08-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -126,13 +142,13 @@ CREATE TABLE `doctors` (
   `role` varchar(255) NOT NULL,
   `spcility` varchar(255) NOT NULL,
   `doc_username` varchar(255) NOT NULL,
-  `doc_pass` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `doc_image` varchar(255) NOT NULL,
   `Working_time` date NOT NULL,
   `doc_depid` int(3) NOT NULL,
   `City` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `Join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `facebook` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL COMMENT '0 = In-Active, 1 = Active',
   `tweet` varchar(255) NOT NULL,
@@ -145,7 +161,7 @@ CREATE TABLE `doctors` (
 -- Dumping data for table `doctors`
 --
 
-INSERT INTO `doctors` (`doc_id`, `first_name`, `last_name`, `date_of_Birth`, `email`, `gender`, `phone`, `Designation`, `role`, `spcility`, `doc_username`, `doc_pass`, `doc_image`, `Working_time`, `doc_depid`, `City`, `address`, `Join_date`, `facebook`, `status`, `tweet`, `instragram`, `linkdin`, `google_plus`) VALUES
+INSERT INTO `doctors` (`doc_id`, `first_name`, `last_name`, `date_of_Birth`, `email`, `gender`, `phone`, `Designation`, `role`, `spcility`, `doc_username`, `pass`, `doc_image`, `Working_time`, `doc_depid`, `City`, `address`, `join_date`, `facebook`, `status`, `tweet`, `instragram`, `linkdin`, `google_plus`) VALUES
 (1, 'fdf', '11', '2018-07-03', '', '', '', '', 'employee', '', '', '', '', '0000-00-00', 8, '', '', '2018-07-31 17:12:28', '', 0, '', '', '', ''),
 (11, 'alamin', 'hossain', '2018-07-26', 'md.alamin5928@gmail.com', 'male', '01822', '', 'employee', '', 'admin', 'admin@123', 'http://localhost/HospitalManagement/public/assets/doctorimage/8.jpg', '0000-00-00', 6, '', '', '2018-07-31 17:12:32', '', 1, '', '', '', ''),
 (12, 'sdsd', 'ds', '2018-06-27', 'admin@gmail.com', 'male', '01824225928', '', 'employee', '', 'admin', 'admin@123', 'http://localhost/HospitalManagement/public/assets/doctorimage/11.jpg', '0000-00-00', 6, '', '', '2018-07-31 17:12:35', '', 1, '', '', '', ''),
@@ -169,26 +185,34 @@ CREATE TABLE `doctrors_digrees` (
 --
 
 INSERT INTO `doctrors_digrees` (`degre_id`, `Degree_Qulificationid`, `Degree_name`, `inst_name`) VALUES
-(1, 1, 'degr1', 'inst1'),
-(2, 1, 'deg2`', 'inst2'),
-(3, 2, 'good', 'knowlwdwgt'),
-(4, 2, '', ''),
-(5, 3, 'dsd', ''),
-(6, 3, '', ''),
-(7, 4, 'dfdfdf', 'dfdfdf'),
-(8, 5, 'Dr watch', 'watch'),
-(9, 6, 'd', 'd1'),
-(10, 6, 'd2', 'd2'),
-(11, 8, 'dr ', 'hablu'),
-(12, 8, '', ''),
-(13, 9, 'dxdss', 's'),
-(14, 9, 'sdsdsd', 'ssssssssssssssssssssssss'),
-(15, 10, 'dxdss', ''),
-(16, 10, '', ''),
-(17, 11, 'dxdss', '575755555555555555555'),
-(18, 11, '', ''),
-(19, 12, 'sd', ''),
-(20, 12, '', '');
+(22, 5, 'xx', 'yy'),
+(23, 5, 'xxx', 'yyyy'),
+(24, 6, 'dfdf', 'm'),
+(25, 6, 'ererere', 's2'),
+(26, 7, 'dxdss', '575755555555555555555'),
+(27, 7, '', ''),
+(28, 8, 'dxdss', '575755555555555555555'),
+(29, 8, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employ`
+--
+
+CREATE TABLE `employ` (
+  `id` int(11) NOT NULL,
+  `employ_docid` int(10) NOT NULL,
+  `employ_staffid` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employ`
+--
+
+INSERT INTO `employ` (`id`, `employ_docid`, `employ_staffid`) VALUES
+(1, 13, 1),
+(2, 12, 5);
 
 -- --------------------------------------------------------
 
@@ -316,7 +340,8 @@ INSERT INTO `service_chart` (`id`, `service_type`, `service_name`, `deperment_na
 (16, 'Investigation', 'alamin', 'Gynecology', '700', 0),
 (17, 'Investigation', 'gdg', 'Urology', '120', 0),
 (18, 'Investigation', 'dfdfdf', 'Urology', '25', 0),
-(19, 'Treatments', 'new service', 'Urology', '260', 0);
+(19, 'Treatments', 'new service', 'Urology', '260', 0),
+(20, 'Investigation', 'alamin', 'dffd', '700', 0);
 
 -- --------------------------------------------------------
 
@@ -351,8 +376,8 @@ CREATE TABLE `staff` (
   `staff_id` int(10) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `staff_email` varchar(255) NOT NULL,
-  `staff_pass` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `staff_confirmpassword` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(11) NOT NULL,
@@ -369,7 +394,7 @@ CREATE TABLE `staff` (
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `staff_email`, `staff_pass`, `staff_confirmpassword`, `address`, `phone`, `Staff_image`, `ages`, `gender`, `joiningdate`, `eduction`, `role`, `staff_status`) VALUES
+INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `email`, `pass`, `staff_confirmpassword`, `address`, `phone`, `Staff_image`, `ages`, `gender`, `joiningdate`, `eduction`, `role`, `staff_status`) VALUES
 (1, ' sr alamn1ghgh', 'hossain', 'alamin@gmail.com', 'admin', '0', 'dhaka', '32', 'http://localhost/HospitalManagement/public/assets/Staff/17800016_1565413556833199_1970750778728872010_n.jpg', 23, 'male', '0000-00-00 00:00:00', '', 'employee', 1),
 (5, 'alamin hossin', 'is ', 'ghgh@gmail.com', 'aklima', 'aklima', 'dhaka', '0182422598', 'http://localhost/HospitalManagement/public/assets/Staff/index.jpg', 25, 'male', '2018-07-02 00:00:00', 'bSx', 'employee', 0);
 
@@ -468,7 +493,13 @@ ALTER TABLE `doctors`
 --
 ALTER TABLE `doctrors_digrees`
   ADD PRIMARY KEY (`degre_id`),
-  ADD KEY `Degree_Qulificationid` (`Degree_Qulificationid`);
+  ADD KEY `doctrors_digrees_ibfk_1` (`Degree_Qulificationid`);
+
+--
+-- Indexes for table `employ`
+--
+ALTER TABLE `employ`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `patients`
@@ -540,7 +571,7 @@ ALTER TABLE `word`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `apoinment`
@@ -564,7 +595,13 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `doctrors_digrees`
 --
 ALTER TABLE `doctrors_digrees`
-  MODIFY `degre_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `degre_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `employ`
+--
+ALTER TABLE `employ`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `patients`
@@ -594,7 +631,7 @@ ALTER TABLE `sechudul`
 -- AUTO_INCREMENT for table `service_chart`
 --
 ALTER TABLE `service_chart`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `service_fee`
@@ -646,7 +683,7 @@ ALTER TABLE `doctors`
 -- Constraints for table `doctrors_digrees`
 --
 ALTER TABLE `doctrors_digrees`
-  ADD CONSTRAINT `doctrors_digrees_ibfk_1` FOREIGN KEY (`Degree_Qulificationid`) REFERENCES `doctors` (`doc_id`);
+  ADD CONSTRAINT `doctrors_digrees_ibfk_1` FOREIGN KEY (`Degree_Qulificationid`) REFERENCES `admin` (`admin_id`);
 
 --
 -- Constraints for table `patients`

@@ -54,7 +54,7 @@ class Depertments extends CI_Model
 /////////////////////////////////////////service//////////////////////
     public function insertdrprtmentservice($data)
     {
-        $error=$this->db->insert('service_fee', $data);
+        $error=$this->db->insert('service_chart', $data);
 
         if (empty($error))
         {

@@ -120,7 +120,7 @@
 <!--                            --><?php //if ($this->session->userdata('userType') != "cus" && $this->session->userdata('userType') != null  ) { ?>
 <!--                                <div class="row" id="options_2">-->
 <!--                                    <div class="col-lg-6">-->
-<!--<!--                                        <label>Membership ID :</label>-->-->
+<!--<!--                                        <label>Membership ID :</label>-->
 <!---->
 <!--                                    </div>-->
 <!--                                    <div class="col-lg-6">-->
@@ -161,7 +161,7 @@
                                 <tr>
                                     <td>
                                         Discount <span  id="total" class="pull-right">
-<!--                                --><?php //if ( $this->session->userdata('discount') == null)
+<!--                                <?php //if ( $this->session->userdata('discount') == null)
                                             //							{ echo 0.00;} else{
                                             //									echo $this->session->userdata('discount');
                                             //								} ?><!-- </span>-->
